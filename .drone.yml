@@ -1,0 +1,7 @@
+kind: pipeline
+type: kubernetes
+name: test
+
+steps:
+- name: hello-world
+  image: hello-world
