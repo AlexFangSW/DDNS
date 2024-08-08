@@ -1,7 +1,45 @@
 kind: pipeline
 type: kubernetes
-name: test
+# type: docker
+name: development-push
+
+trigger:
+  branch:
+  - development
+  event: 
+  - push
 
 steps:
-- name: hello-world
-  image: hello-world
+# - name: netshoot
+#   image: nicolaka/netshoot
+#   commands:
+#   - ip route
+#   - ip a
+#   - ping -c 3 google.com
+  # - curl -o cloudflare.zip https://proxy.golang.org/github.com/cloudflare/cloudflare-go/@v/v0.100.0.zip
+  # - ls
+
+# - name: go
+#   image: docker.cloud.alexfangsw.com/cache/library/golang:1.22-alpine 
+#   commands:
+#   - go build -trimpath -o ddns
+
+
+# - name: docker
+#   image: docker.cloud.alexfangsw.com/cache/library/docker:dind
+#   privileged: true
+#   commands:
+#   - sh -c "dockerd-entrypoint.sh & sleep 5 && ls /certs/client && docker --tlscacert=/certs/client/ca.pem --tlscert=/certs/client/cert.pem --tlskey=/certs/client/key.pem --tls -H=127.0.0.1:2376 run --rm --name netshoot nicolaka/netshoot ping -c google.com"
+
+- name: docker
+  image: plugins/docker
+  settings:
+    username:
+      from_secret: docker-user
+    password:
+      from_secret: docker-password
+    registry: docker.cloud.alexfangsw.com
+    repo: docker.cloud.alexfangsw.com/infra/ddns
+    tags:
+    - latest
+    - development
