@@ -1,7 +1,10 @@
 kind: pipeline
 type: kubernetes
-name: test
+name: default
 
 steps:
-- name: hello-world
-  image: hello-world
+- name: greeting
+  image: alpine
+  commands:
+  - echo hello
+  - echo world
