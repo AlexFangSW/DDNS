@@ -6,5 +6,5 @@ steps:
 - name: greeting
   image: alpine
   commands:
-  - echo hello
+  - echo hello1
   - echo world
