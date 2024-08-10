@@ -1,10 +1,25 @@
 kind: pipeline
 type: kubernetes
-name: default
+name: development-push
+
+trigger:
+  branch:
+  - development
+  event: 
+  - push
 
 steps:
-- name: greeting
-  image: alpine
-  commands:
-  - echo hello333
-  - echo world333
+- name: docker
+  image: plugins/docker
+  settings:
+    username:
+      from_secret: docker-user
+    password:
+      from_secret: docker-password
+    registory: docker.cloud.alexfangsw.com
+    repo: docker.cloud.alexfangsw.com/infra/ddns
+    tags:
+    - latest
+    - development
+
+# TODO: helm
