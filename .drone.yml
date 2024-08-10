@@ -27,10 +27,9 @@ steps:
       from_secret: docker-password
     registry: docker.cloud.alexfangsw.com
     repo: docker.cloud.alexfangsw.com/infra/ddns
+    mtu: 1450
     tags:
     - latest
     - development
-    commands:
-      - ping -c 3 google.com
 
 # TODO: helm
