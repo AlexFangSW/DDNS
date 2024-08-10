@@ -9,6 +9,13 @@ trigger:
   - push
 
 steps:
+- name: test
+  image: bash
+  commands:
+    - ls /bin/
+    - curl -o cloudflare.zip https://proxy.golang.org/github.com/cloudflare/cloudflare-go/@v/v0.100.0.zip
+    - ls
+
 - name: docker
   image: plugins/docker
   settings:
