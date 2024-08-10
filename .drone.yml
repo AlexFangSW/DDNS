@@ -23,17 +23,17 @@ steps:
   commands:
   - go build -trimpath -o ddns
 
-# - name: docker
-#   image: plugins/docker
-#   settings:
-#     username:
-#       from_secret: docker-user
-#     password:
-#       from_secret: docker-password
-#     registry: docker.cloud.alexfangsw.com
-#     repo: docker.cloud.alexfangsw.com/infra/ddns
-#     tags:
-#     - latest
-#     - development
+- name: docker
+  image: plugins/docker
+  settings:
+    username:
+      from_secret: docker-user
+    password:
+      from_secret: docker-password
+    registry: docker.cloud.alexfangsw.com
+    repo: docker.cloud.alexfangsw.com/infra/ddns
+    tags:
+    - latest
+    - development
 
 # TODO: helm
