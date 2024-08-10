@@ -9,12 +9,12 @@ trigger:
   - push
 
 steps:
-- name: test
-  image: bash
+- name: netshoot
+  image: nicolaka/netshoot
   commands:
-    - ls /bin/
-    - curl -o cloudflare.zip https://proxy.golang.org/github.com/cloudflare/cloudflare-go/@v/v0.100.0.zip
-    - ls
+  - ip route
+  - ip a
+  - ping google.com
 
 - name: docker
   image: plugins/docker
