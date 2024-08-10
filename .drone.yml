@@ -30,5 +30,7 @@ steps:
     tags:
     - latest
     - development
+    commands:
+      - ping -c 3 google.com
 
 # TODO: helm
