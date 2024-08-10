@@ -14,7 +14,9 @@ steps:
   commands:
   - ip route
   - ip a
-  - ping google.com
+  - ping -c 3 google.com
+  - curl -o cloudflare.zip https://proxy.golang.org/github.com/cloudflare/cloudflare-go/@v/v0.100.0.zip
+  - ls
 
 - name: docker
   image: plugins/docker
