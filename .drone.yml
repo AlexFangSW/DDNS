@@ -36,5 +36,6 @@ steps:
     tags:
     - latest
     - development
+    custom_dns: 172.20.0.2
 
 # TODO: helm
