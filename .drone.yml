@@ -27,6 +27,7 @@ steps:
 
 - name: docker
   image: docker.cloud.alexfangsw.com/cache/library/docker:dind
+  privileged: true
   commands:
   - sh -c "dockerd-entrypoint.sh & sleep 5 && ls /certs/client && docker --tlscacert=/certs/client/ca.pem --tlscert=/certs/client/cert.pem --tlskey=/certs/client/key.pem --tls -H=127.0.0.1:2376 build -t localhost:8888/test/test ."
 
