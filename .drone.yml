@@ -1,6 +1,6 @@
 kind: pipeline
-type: kubernetes
-# type: docker
+# type: kubernetes
+type: docker
 name: development-push
 
 trigger:
