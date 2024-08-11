@@ -1,6 +1,6 @@
 kind: pipeline
-# type: kubernetes
-type: docker
+type: kubernetes
+# type: docker
 name: development-push
 
 trigger:
@@ -24,18 +24,24 @@ steps:
   commands:
   - go build -trimpath -o ddns
 
-- name: docker
-  image: plugins/docker
-  settings:
-    username:
-      from_secret: docker-user
-    password:
-      from_secret: docker-password
-    registry: docker.cloud.alexfangsw.com
-    repo: docker.cloud.alexfangsw.com/infra/ddns
-    tags:
-    - latest
-    - development
-    custom_dns: 192.168.99.55
 
-# TODO: helm
+- name: docker
+  image: docker.cloud.alexfangsw.com/cache/library/docker:dind
+  commands:
+  - sh
+  - -c
+  - "dockerd-entrypoint.sh & sleep 5 && ls /certs/client && docker --tlscacert=/certs/client/ca.pem --tlscert=/certs/client/cert.pem --tlskey=/certs/client/key.pem --tls -H=127.0.0.1:2376 build -t localhost:8888/test/test ."
+
+# - name: docker
+#   image: plugins/docker
+#   settings:
+#     username:
+#       from_secret: docker-user
+#     password:
+#       from_secret: docker-password
+#     registry: docker.cloud.alexfangsw.com
+#     repo: docker.cloud.alexfangsw.com/infra/ddns
+#     tags:
+#     - latest
+#     - development
+    # custom_dns: 192.168.99.55
