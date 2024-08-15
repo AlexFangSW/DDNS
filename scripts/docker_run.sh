@@ -7,5 +7,5 @@ set +a
 docker run -d --name ddns \
   --env-file $ENV_DIR/.env.ddns \
   --network infra  \
-	--restart=unless-stopped \
+  --restart=unless-stopped \
   "$DOCKER_REPO/$DOCKER_PROJECT/$DOCKER_IMAGE:$DOCKER_TAG"
