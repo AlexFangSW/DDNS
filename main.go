@@ -121,16 +121,16 @@ func updateDNSRecord() error {
 }
 
 func main() {
-  for { 
-    log.Println("start updating dns record")
+	for {
+		log.Println("start updating dns record")
 
-    if err := updateDNSRecord(); err != nil {
-      log.Fatal(err)
-    }
+		if err := updateDNSRecord(); err != nil {
+			log.Fatal(err)
+		}
 
-    log.Println("finish updating dsn record")
+		log.Println("finish updating dsn record")
 
-    log.Println("sleeping for 5 minutes...")
-  	time.Sleep(5 *time.Minute)
-  }
+		log.Println("sleeping for 5 minutes...")
+		time.Sleep(5 * time.Minute)
+	}
 }

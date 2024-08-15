@@ -10,7 +10,7 @@ trigger:
 
 steps:
 - name: docker
-  image: plugins/docker
+  image: docker.cloud.alexfangsw.com/cache/plugins/docker
   settings:
     username:
       from_secret: docker-user
