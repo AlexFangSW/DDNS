@@ -2,7 +2,7 @@
 
 # load env
 set -a
-source .env
+source $ENV_DIR/.env.ddns
 set +a
 
 # list records
